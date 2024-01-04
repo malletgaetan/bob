@@ -1,7 +1,6 @@
 [ORG 0x0]
 [BITS 16]
 
-%define KSIZE
 %define BASE 0x100
 
 setup:
@@ -46,14 +45,14 @@ protected_mode_switch:
 	mov cr0, eax
 	jmp load_segment ; since org 0, can't reload code segment directly or would break everything
 load_segment:
-	mov ax, (gdt_ds - gdt)
+	mov ax, 0x10
 	mov ds, ax
 	mov fs, ax
 	mov gs, ax
 	mov es, ax
 	mov ss, ax
 	mov esp, 0x9F000
-	jmp dword (gdt_cs - gdt):0x1000 ; reload code segment
+	jmp dword 0x08:0x1000 ; reload code segment
 
 print:
         push ax

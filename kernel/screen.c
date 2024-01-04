@@ -12,7 +12,7 @@ void reset_screen(void)
 		((u8 *)SCREEN_ADDRESS)[i] = 0;
 		++i;
 	}
-	offset = SCREEN_SIZE - SCREEN_LENGTH;
+	offset = 0;
 }
 
 static void scroll_up(void)
